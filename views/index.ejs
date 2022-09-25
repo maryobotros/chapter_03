@@ -12,28 +12,25 @@
         <svg width="120" height="120" viewBox="0 0 120
         120">
             <rect id="change-color"
-            fill="orange"
+            fill="LightSkyBlue"
             width="120"
             height="120"
         /> </svg>
    <script src="/socket.io/socket.io.js"></script>
    <script>
        var socket = io();
-       var current = "0";
        var shape = document.getElementById('change-color');
        var buttonState = document.getElementById('button-state');
-       var colorArray = ["LightSkyBlue", "LightSlateGray","DarkOliveGreen", "orange", "DarkRed", "gold", "purple"];
+       //var colorArray = ["LightSkyBlue", "LightSlateGray","DarkOliveGreen", "orange", "DarkRed", "gold", "purple"];
+       
        socket.on("data", function(data){
            if(data === "1"){
                buttonState.innerHTML = "pressed";
-               if(data !== current){
-                   var newColor = colorArray[Math.
-                   floor(Math.random()*colorArray.length)];
-                   shape.style.fill = newColor;
-                }
+               shape.style.fill = "orange";
             } 
-            else{
+            else if (data === "0"){
                buttonState.innerHTML = "not pressed";
+               shape.style.fill = "LightSkyBlue";
            }
            current = data;
        });
