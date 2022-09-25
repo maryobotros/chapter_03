@@ -4,18 +4,34 @@
         <meta charset="UTF-8">
         <title>Get data</title>
     </head>
+    <style>
+        #sample {
+            background-color: red;
+            width: 300px;
+            height: 300px;
+          }
+    </style>
     <body>
         <h1>Arduino data</h1>
         <p>Press the button on the Arduino to change the
         color of the square</p>
         <p>The button is <span id="button-state"></span> </p>
-        <svg width="120" height="120" viewBox="0 0 120
-        120">
+        <svg width="120" height="120" viewBox="0 0 120 120">
             <rect id="change-color"
-            fill="LightSkyBlue"
-            width="120"
-            height="120"
-        /> </svg>
+                fill="LightSkyBlue"
+                width="120"
+                height="120"
+            /> 
+        </svg>
+
+        <svg width="120" height="120" viewBox="0 0 120 120">
+            <rect id="sample"
+                fill="purple"
+                width="120"
+                height="120"
+                opacity="10"
+            />
+        </svg>
    <script src="/socket.io/socket.io.js"></script>
    <script>
        var socket = io();
