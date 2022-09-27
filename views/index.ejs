@@ -4,13 +4,6 @@
         <meta charset="UTF-8">
         <title>Get data</title>
     </head>
-    <style>
-        #sample {
-            background-color: red;
-            width: 300px;
-            height: 300px;
-          }
-    </style>
     <body>
         <h1>Arduino data</h1>
         <p>Press the button on the Arduino to change the
@@ -29,22 +22,31 @@
                 fill="purple"
                 width="120"
                 height="120"
-                opacity="10"
+                fill-opacity="1"
             />
         </svg>
    <script src="/socket.io/socket.io.js"></script>
    <script>
        var socket = io();
        var shape = document.getElementById('change-color');
+       var shape1 = document.getElementById('sample');
        var buttonState = document.getElementById('button-state');
        //var colorArray = ["LightSkyBlue", "LightSlateGray","DarkOliveGreen", "orange", "DarkRed", "gold", "purple"];
        
        socket.on("data", function(data){
-           if(data === "1"){
+           
+            
+            if(data !== "pre" || data !== "not"){
+                shape1.style.fillOpacity = data + "%";
+                console.log(data);
+            }
+            // button is pressed (pre)
+            else if(data === "pre"){
                buttonState.innerHTML = "pressed";
                shape.style.fill = "orange";
             } 
-            else if (data === "0"){
+            // button is not pressed (not)
+            else if (data === "not"){
                buttonState.innerHTML = "not pressed";
                shape.style.fill = "LightSkyBlue";
            }
