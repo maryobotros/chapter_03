@@ -36,7 +36,7 @@
        socket.on("data", function(data){
            
             
-            if(data !== "pre" || data !== "not"){
+            if(data !== "pre" && data !== "not"){
                 shape1.style.fillOpacity = data + "%";
                 console.log(data);
             }
